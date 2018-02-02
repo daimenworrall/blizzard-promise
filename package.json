@@ -1,6 +1,6 @@
 {
   "name": "blizzard-promise",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Blizzard API Promise Wrapper",
   "main": "index.js",
   "scripts": {

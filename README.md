@@ -29,7 +29,7 @@
   .getProfile(REGION, REALM, CHARACTER, FIELDS)
   ```
 
-  Fields is optional, if not provided it will just return the basic character info. Here's an example:
+  Fields is an optional array, if not provided it will just return the basic character info. Here's an example:
 
   ```javascript
   blizzard.getProfile("eu", "Alonsus", "Kattarinna")
@@ -62,20 +62,12 @@
 
   Possible Fields:
 
-  achievements
-  appearance
-  feed
-  guild
-  hunterPets
-  items
-  mounts
-  pets
-  petSlots
-  professions
-  progression
-  pvp
-  quests
-  reputation
-  stats
-  talents
-  titles
+  achievements, appearance, feed, guild, hunterPets, items, mounts, pets, petSlots, professions, progression, pvp, quests, reputation, stats, talents, titles
+
+  Fields is an array, example use case:
+
+  ```javascript
+  blizzard.getProfile("eu", "Alonsus", "Kattarinna", ["guild", "items"])
+  ```
+
+  Will return the basic user profile with guild and item info.
