@@ -1,0 +1,24 @@
+{
+  "name": "blizzard-promise",
+  "version": "0.0.1",
+  "description": "Blizzard API Promise Wrapper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "blizzard",
+    "warcraft",
+    "promise",
+    "api"
+  ],
+  "author": "Daimen Worrall",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.83.0"
+  }
+}
