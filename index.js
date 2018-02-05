@@ -37,6 +37,20 @@ module.exports = function(api_key, region, locale) {
     });
   }
 
+  module.getAuctions = function(realm) {
+    return new Promise(function(resolve, reject) {
+      let url = `https://${region}.api.battle.net/wow/auction//data/${realm}?locale=${locale}&apikey=${api_key}`;
+      request.get(url, function(error, result, body) {
+        if (error) return reject(error);
+        url = JSON.parse(body).files[0].url;
+        request.get(url, function(error, result, body) {
+          if (error) return reject(error);
+          return resolve( JSON.parse(body).auctions );
+        });
+      });
+    });
+  }
+
   return module;
 
 }

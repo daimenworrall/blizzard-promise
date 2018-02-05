@@ -77,3 +77,4 @@
 
     .getProfile( Realm, CharacterName, Fields ) //get a wow character profile
     .getAchievement( AchievementID ) //Get info about a specific achievement
+    .getAuctions( Realm ) //Return all the auctions on a specific realm. WARNING: This dataset could be extremely large. On a low population server it was over 50k entries in testing
