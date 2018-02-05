@@ -5,10 +5,14 @@
 
 const request = require('request');
 
-module.exports = function(api_key, locale) {
+module.exports = function(api_key, region, locale) {
   let module = {};
 
-  module.getProfile = function(region, realm, character, fields) {
+  if (!api_key) throw "API Key is required.";
+  if (!locale) locale = "en_GB";
+  if (!region) region = "eu";
+
+  module.getProfile = function(realm, character, fields) {
     return new Promise(function(resolve, reject) {
       if (fields) {
         fields = "&fields=" + fields.join(",");
@@ -18,7 +22,17 @@ module.exports = function(api_key, locale) {
       let url = `https://${region}.api.battle.net/wow/character/${realm}/${character}?locale=${locale}&apikey=${api_key}${fields}`;
       request.get(url, function(error, result, body) {
         if (error) return reject(error);
-        return resolve(body);
+        return resolve( JSON.parse(body) );
+      });
+    });
+  }
+
+  module.getAchievement = function(id) {
+    return new Promise(function(resolve, reject) {
+      let url = `https://${region}.api.battle.net/wow/achievement/${id}?locale=${locale}&apikey=${api_key}`;
+      request.get(url, function(error, result, body) {
+        if (error) return reject(error);
+        return resolve( JSON.parse(body) );
       });
     });
   }

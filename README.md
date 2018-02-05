@@ -16,23 +16,24 @@
   Require the module and pass your API Key:
 
   ```javascript
-  let blizzard = require("blizzard-promise")("API KEY HERE", "en_GB");
+  let blizzard = require("blizzard-promise")("API KEY HERE", "eu", "en_GB");
   ```
 
-  You may pass a different locale. We'll be using en_GB as an example.
+  You may pass a different locale. We'll be using `en_GB` as an example.
+  You may pass a different region. We'll be using `eu` as an example.
 
 ## Usage
 
 ### WOW Character Profile
 
   ```javascript
-  .getProfile(REGION, REALM, CHARACTER, FIELDS)
+  .getProfile(REALM, CHARACTER, FIELDS)
   ```
 
   Fields is an optional array, if not provided it will just return the basic character info. Here's an example:
 
   ```javascript
-  blizzard.getProfile("eu", "Alonsus", "Kattarinna")
+  blizzard.getProfile("Alonsus", "Kattarinna")
     .then(function(result) {
       console.log(result);
     })
@@ -67,7 +68,12 @@
   Fields is an array, example use case:
 
   ```javascript
-  blizzard.getProfile("eu", "Alonsus", "Kattarinna", ["guild", "items"])
+  blizzard.getProfile("Alonsus", "Kattarinna", ["guild", "items"])
   ```
 
   Will return the basic user profile with guild and item info.
+
+  ### Available APIS
+
+    .getProfile( Realm, CharacterName, Fields ) //get a wow character profile
+    .getAchievement( AchievementID ) //Get info about a specific achievement
